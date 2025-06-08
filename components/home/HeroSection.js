@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className={styles.hero}>
       <h1 className={styles.headline}>
-        Building Financial Algorithms with an Engineer &apos; s Precision
+        Building Financial Algorithms with an Engineer&apos;s Precision
       </h1>
       <p className={styles.subheading}>
          Electrical Engineering student with CCNA-certified networking expertise and a passion for developing quantitative trading strategies in C#.
