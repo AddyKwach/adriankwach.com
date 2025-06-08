@@ -61,3 +61,11 @@ a:hover {
   padding: 40px 20px; /* Adds space on top/bottom and sides */
   min-height: 70vh; /* Ensures footer isn't too high on short pages */
 }
+
+/* Add this at the bottom */
+@media (max-width: 768px) {
+  html, body {
+    /* Restores the default system cursor on smaller screens */
+    cursor: auto; 
+  }
+}

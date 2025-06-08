@@ -25,3 +25,11 @@
   /* --- COLOR CHANGE --- */
   background-color: rgba(200, 200, 200, 0.1); /* Greyish and transparent */
 }
+
+/* Add this at the bottom */
+@media (max-width: 768px) {
+  .cursor {
+    /* Hides our custom cursor on smaller screens */
+    display: none;
+  }
+}
