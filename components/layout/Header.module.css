@@ -1,0 +1,90 @@
+/* components/layout/Header.module.css */
+
+.header {
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--background-dark);
+  position: relative; /* Needed for positioning the mobile menu */
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* --- Desktop Navigation Styles --- */
+.navDesktop {
+  display: flex;
+  gap: 30px;
+}
+
+.navDesktop a {
+  font-size: 1rem;
+  color: var(--secondary-text-dark);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.navDesktop a:hover {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+/* --- Mobile Navigation Styles --- */
+.menuButton {
+  display: none; /* Hidden by default on large screens */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navMobile {
+  display: none; /* Also hidden by default */
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Position it right below the header */
+  left: 0;
+  width: 100%;
+  background-color: var(--background-dark);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 10px 0;
+}
+
+.navMobile a {
+  color: var(--text-dark);
+  padding: 15px 20px;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid var(--border-dark);
+}
+.navMobile a:first-child {
+  border-top: none;
+}
+
+/* --- The Media Query for Responsiveness --- */
+@media (max-width: 768px) {
+  .navDesktop {
+    display: none; /* Hide the desktop nav */
+  }
+
+  .menuButton {
+    display: block; /* Show the hamburger button */
+  }
+  
+  .navMobile {
+    display: flex; /* Let the JS handle showing/hiding this */
+  }
+}

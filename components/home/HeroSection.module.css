@@ -1,0 +1,65 @@
+/* components/home/HeroSection.module.css */
+
+.hero {
+  text-align: center; /* Centers all the text */
+  padding: 80px 0; /* Adds significant vertical space */
+}
+
+.headline {
+  font-size: 3.5rem; /* Large, impactful text */
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 800px; /* Prevents the headline from becoming too wide */
+  margin: 0 auto; /* Centers the headline itself */
+  color: var(--text-dark);
+}
+
+.subheading {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 20px auto 30px auto; /* Adds space above and below */
+  color: var(--secondary-text-dark);
+  line-height: 1.6;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--accent-dark); /* Our Mulberry Purple! */
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.ctaButton:hover {
+  background-color: #8a4d76; /* A slightly different shade on hover */
+  transform: translateY(-2px); /* Lifts the button slightly */
+  text-decoration: none;
+}
+
+/* Add this at the bottom of components/home/HeroSection.module.css */
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2.5rem; /* Make the headline smaller */
+    max-width: 90%;   /* Allow it to use more of the screen width */
+  }
+
+  .subheading {
+    font-size: 1rem; /* Make the subheading smaller */
+    max-width: 90%;
+  }
+
+  .hero {
+    padding: 60px 0; /* Reduce the vertical space slightly */
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 2rem; /* Make the headline even smaller for phones */
+  }
+}
