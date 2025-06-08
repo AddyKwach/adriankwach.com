@@ -3,7 +3,8 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer'; // <-- 1. IMPORT THE FOOTER
+import Footer from '../components/layout/Footer';
+import CustomCursor from '@/components/common/CustomCursor'; // <-- 1. IMPORT
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,12 +19,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <CustomCursor /> {/* <-- 2. ADD THE COMPONENT HERE */}
         <Header />
-        {/* 2. APPLY THE NEW CLASS TO THE MAIN ELEMENT */}
         <main className="main-content">
           {children}
         </main>
-        <Footer /> {/* <-- 3. ADD THE FOOTER COMPONENT HERE */}
+        <Footer />
       </body>
     </html>
   );
