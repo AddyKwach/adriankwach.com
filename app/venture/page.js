@@ -13,7 +13,7 @@ export default function VenturePage() {
       <div className={styles.section}>
         <h2 className={styles.subtitle}>The Vision</h2>
         <p>
-          Our mission is to empower retail and professional traders with institutional-grade technical indicators and quantitative tools. We believe that access to high-quality, data-driven insights should be democratized. Inspired by leaders in the field like Luc-Algo, we aim to build a suite of products that provide a tangible edge in the market.
+          Our mission is to empower retail and professional traders with institutional-grade technical indicators and quantitative tools. We believe that access to high-quality, data-driven insights should be democratized. Inspired by leaders in the field like Lux-Algo, we aim to build a suite of products that provide a tangible edge in the market.
         </p>
       </div>
 
@@ -39,7 +39,7 @@ export default function VenturePage() {
       <div className={styles.ctaSection}>
         <h2 className={styles.subtitle}>Get Involved</h2>
         <p>
-          We are in the early stages of development and looking for early adopters, beta testers, and potential partners. If you &apos; re interested in shaping the future of trading tools, we &apos; d love to hear from you.
+          We are in the early stages of development and looking for early adopters, beta testers, and potential partners. If you&apos;re interested in shaping the future of trading tools, we&apos;d love to hear from you.
         </p>
         {/* This creates a simple "Contact Me" email link. */}
         <Link href="mailto:youremail@example.com" className={styles.ctaButton}>

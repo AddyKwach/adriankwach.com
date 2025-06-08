@@ -9,7 +9,7 @@ export default function ContactPage() {
     <div className={styles.container}>
       <h1 className={styles.title}>Contact Me</h1>
       <p className={styles.subtitle}>
-        I &apos; m open to discussing new opportunities, collaborations, or just a chat about quantitative finance. Feel free to reach out.
+        I&apos;m open to discussing new opportunities, collaborations, or just a chat . Feel free to reach out.
       </p>
 
       <div className={styles.socialLinks}>
