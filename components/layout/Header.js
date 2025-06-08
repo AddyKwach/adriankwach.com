@@ -1,35 +1,29 @@
 // components/layout/Header.js
 "use client"; 
 
-// 1. Import useEffect, which lets us interact with browser events
 import { useState, useEffect } from 'react'; 
 import Link from 'next/link';
 import styles from './Header.module.css';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  // 2. Add a new state to track if the page is scrolled
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 3. Set up an effect to listen for scroll events
   useEffect(() => {
     const handleScroll = () => {
-      // Set state to true if user has scrolled more than 10px, false otherwise
       setIsScrolled(window.scrollY > 10);
     };
-
-    // Add the event listener when the component mounts
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // The empty array ensures this effect runs only once
+  }, []);
+
+  // This line dynamically adds the ".scrolled" class when needed
+  const headerClassName = `${styles.header} ${isScrolled ? styles.scrolled : ''}`;
 
   return (
-    // 4. Conditionally apply the 'scrolled' class based on our state
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+    <header className={headerClassName}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">ADRIAN KWACH</Link>

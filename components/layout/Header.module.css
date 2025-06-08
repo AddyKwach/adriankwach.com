@@ -3,26 +3,23 @@
 .header {
   width: 100%;
   padding: 20px 0;
-  
-  /* --- Changes for Sticky Header --- */
   position: sticky; /* Makes the header stick to the top */
   top: 0;
   z-index: 50;
-  transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
   
-  /* Default state (at the top of the page) */
+  /* Default state (at the top of the page): TRANSPARENT */
   background-color: transparent;
-  border-bottom: 1px solid transparent; /* Start with a transparent border */
+  border-bottom: 1px solid transparent; 
 }
 
-/* This new class will be added by JavaScript on scroll */
+/* This style applies ONLY when the header has the ".scrolled" class */
 .header.scrolled {
   /* This creates the translucent "frosted glass" effect */
   background-color: rgba(18, 18, 18, 0.7); /* translucent black */
-  backdrop-filter: blur(10px); /* This blurs the content behind it */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-
-  border-bottom: 1px solid var(--border-dark); /* Add the border back on scroll */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari browser support */
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .container {
@@ -42,12 +39,11 @@
   letter-spacing: 1px;
 }
 
-/* --- Desktop Navigation Styles --- */
 .navDesktop {
   display: flex;
   gap: 30px;
 }
-
+/* (The rest of the CSS is for the mobile menu and should be the same) */
 .navDesktop a {
   font-size: 1rem;
   color: var(--secondary-text-dark);
@@ -60,7 +56,6 @@
   text-decoration: none;
 }
 
-/* --- Mobile Navigation Styles --- */
 .menuButton {
   display: none;
   background: none;
@@ -75,12 +70,9 @@
   top: 100%;
   left: 0;
   width: 100%;
-  
-  /* Also give the mobile dropdown the frosted glass effect */
   background-color: rgba(18, 18, 18, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
   border-bottom: 1px solid var(--border-dark);
   padding: 10px 0;
 }
@@ -94,10 +86,9 @@
 }
 
 .navMobile a:first-child {
-  border-top: 1px solid transparent; /* The first link doesn't need a top border */
+  border-top: 1px solid transparent;
 }
 
-/* --- The Media Query for Responsiveness --- */
 @media (max-width: 768px) {
   .navDesktop {
     display: none;
