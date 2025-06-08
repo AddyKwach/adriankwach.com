@@ -3,10 +3,26 @@
 .header {
   width: 100%;
   padding: 20px 0;
-  border-bottom: 1px solid var(--border-dark);
-  background-color: var(--background-dark);
-  position: relative; /* Needed for positioning the mobile menu */
-  z-index:50;
+  
+  /* --- Changes for Sticky Header --- */
+  position: sticky; /* Makes the header stick to the top */
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  
+  /* Default state (at the top of the page) */
+  background-color: transparent;
+  border-bottom: 1px solid transparent; /* Start with a transparent border */
+}
+
+/* This new class will be added by JavaScript on scroll */
+.header.scrolled {
+  /* This creates the translucent "frosted glass" effect */
+  background-color: rgba(18, 18, 18, 0.7); /* translucent black */
+  backdrop-filter: blur(10px); /* This blurs the content behind it */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+
+  border-bottom: 1px solid var(--border-dark); /* Add the border back on scroll */
 }
 
 .container {
@@ -46,20 +62,25 @@
 
 /* --- Mobile Navigation Styles --- */
 .menuButton {
-  display: none; /* Hidden by default on large screens */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
 }
 
 .navMobile {
-  display: none; /* Also hidden by default */
+  display: none;
   flex-direction: column;
   position: absolute;
-  top: 100%; /* Position it right below the header */
+  top: 100%;
   left: 0;
   width: 100%;
-  background-color: var(--background-dark);
+  
+  /* Also give the mobile dropdown the frosted glass effect */
+  background-color: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
   border-bottom: 1px solid var(--border-dark);
   padding: 10px 0;
 }
@@ -71,21 +92,22 @@
   width: 100%;
   border-top: 1px solid var(--border-dark);
 }
+
 .navMobile a:first-child {
-  border-top: none;
+  border-top: 1px solid transparent; /* The first link doesn't need a top border */
 }
 
 /* --- The Media Query for Responsiveness --- */
 @media (max-width: 768px) {
   .navDesktop {
-    display: none; /* Hide the desktop nav */
+    display: none;
   }
 
   .menuButton {
-    display: block; /* Show the hamburger button */
+    display: block;
   }
   
   .navMobile {
-    display: flex; /* Let the JS handle showing/hiding this */
+    display: flex;
   }
 }

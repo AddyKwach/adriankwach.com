@@ -1,25 +1,40 @@
 // components/layout/Header.js
-
-// This directive tells Next.js that this component uses interactivity (state)
-// and should be rendered on the client-side.
 "use client"; 
 
-import { useState } from 'react'; // <-- 1. Import useState
+// 1. Import useEffect, which lets us interact with browser events
+import { useState, useEffect } from 'react'; 
 import Link from 'next/link';
 import styles from './Header.module.css';
 
 const Header = () => {
-  // 2. Set up the state for our mobile menu
   const [menuOpen, setMenuOpen] = useState(false);
+  // 2. Add a new state to track if the page is scrolled
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 3. Set up an effect to listen for scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set state to true if user has scrolled more than 10px, false otherwise
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    // Add the event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // The empty array ensures this effect runs only once
 
   return (
-    <header className={styles.header}>
+    // 4. Conditionally apply the 'scrolled' class based on our state
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">ADRIAN KWACH</Link>
         </div>
 
-        {/* 3. This is our desktop navigation */}
         <nav className={styles.navDesktop}>
           <Link href="/projects">Projects</Link>
           <Link href="/about">About</Link>
@@ -27,12 +42,10 @@ const Header = () => {
           <Link href="/contact">Contact</Link>
         </nav>
 
-        {/* 4. This is the hamburger menu button for mobile */}
         <button 
           className={styles.menuButton} 
-          onClick={() => setMenuOpen(!menuOpen)} // Toggles the menu state
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {/* This SVG creates the three lines (or an 'X' if the menu is open) */}
           <svg viewBox="0 0 100 80" width="25" height="25" fill="#FFF">
             <rect width="100" height="10" rx="8"></rect>
             <rect y="30" width="100" height="10" rx="8"></rect>
@@ -41,12 +54,11 @@ const Header = () => {
         </button>
       </div>
 
-      {/* 5. This is the mobile navigation menu that appears when toggled */}
       {menuOpen && (
         <nav className={styles.navMobile}>
           <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link href="/venture" onClick={() => setMenuOpe(false)}>Venture</Link>
+          <Link href="/venture" onClick={() => setMenuOpen(false)}>Venture</Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       )}
