@@ -6,7 +6,7 @@ const ModernHero = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.textContainer}>
-        <span className={styles.greeting}>Hi, I'm</span>
+        <span className={styles.greeting}>Hi, I&apos;m</span>
         <h1 className={styles.name}>Adrian</h1>
         <p className={styles.subtitle}>
            Electrical &amp; Electronic Engineering Student
