@@ -39,7 +39,7 @@ export default function VenturePage() {
       <div className={styles.ctaSection}>
         <h2 className={styles.subtitle}>Get Involved</h2>
         <p>
-          We are in the early stages of development and looking for early adopters, beta testers, and potential partners. If you're interested in shaping the future of trading tools, we'd love to hear from you.
+          We are in the early stages of development and looking for early adopters, beta testers, and potential partners. If you &apos; re interested in shaping the future of trading tools, we &apos; d love to hear from you.
         </p>
         {/* This creates a simple "Contact Me" email link. */}
         <Link href="mailto:youremail@example.com" className={styles.ctaButton}>
