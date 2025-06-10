@@ -32,7 +32,6 @@ const Header = () => {
         <nav className={styles.navDesktop}>
           <Link href="/projects">Projects</Link>
           <Link href="/about">About</Link>
-          <Link href="/venture">Venture</Link>
           <Link href="/contact">Contact</Link>
         </nav>
 
@@ -52,7 +51,6 @@ const Header = () => {
         <nav className={styles.navMobile}>
           <Link href="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link href="/venture" onClick={() => setMenuOpen(false)}>Venture</Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       )}
