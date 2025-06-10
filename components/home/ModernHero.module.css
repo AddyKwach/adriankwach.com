@@ -101,6 +101,10 @@
     flex-basis: auto;
     width: 250px;
     height: 250px;
+    display: flex; /* Ensure it's a flex container */
+    justify-content: center; /* This line centers the image horizontally */
+    align-items: center; /* This line centers the image vertically within its container if needed */
+    margin: 0 auto 20px; /* Add some bottom margin and center the container itself */
   }
 
   .imageWrapper {
