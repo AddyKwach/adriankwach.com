@@ -1,0 +1,42 @@
+/* components/home/ExpertiseSection.module.css */
+
+.expertiseSection {
+  padding: 80px 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--secondary-text-dark);
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  line-height: 1.6;
+}
+
+.carouselContainer {
+  width: 100%;
+}
+
+/* --- This is the key for the "peek-a-boo" faded effect --- */
+/* We use :global() to style the class from the child Carousel component */
+
+.carouselContainer :global(.embla__slide) {
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carouselContainer :global(.embla__slide.is-snapped) {
+  opacity: 1;
+  transform: scale(1);
+}

@@ -1,12 +1,13 @@
 /* components/home/ModernHero.module.css */
 
+
 .hero {
-  min-height: 100vh; 
+  height: 100vh; /* Use height instead of min-height */
   display: flex;
-  align-items: center;
+  align-items: center; /* This will vertically center the content */
   justify-content: center;
   gap: 60px;
-  padding: 40px;
+  padding: 40px; /* This padding is for left/right, which is fine */
   max-width: 1200px;
   margin: 0 auto;
 }

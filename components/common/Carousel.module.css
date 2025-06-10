@@ -1,0 +1,81 @@
+/* components/common/Carousel.module.css */
+
+.embla {
+  position: relative;
+  width: 100%;
+}
+
+.viewport {
+  overflow: hidden; /* This is the key to the peek-a-boo effect */
+}
+
+/* The container is wider than the viewport, allowing slides to overflow */
+.container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -10px;
+}
+
+.slide {
+  position: relative;
+  /* Each slide takes up 50% of the viewport width */
+  flex: 0 0 50%;
+  min-width: 0;
+  padding-left: 10px;
+}
+
+/* --- Arrow Button Styles --- */
+.arrowButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrowButton:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrowButton svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-dark);
+}
+
+.prevButton {
+  left: -22px;
+}
+
+.nextButton {
+  right: -22px;
+}
+
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .slide {
+    /* On mobile, slides take up more space */
+    flex: 0 0 80%;
+  }
+
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+}
