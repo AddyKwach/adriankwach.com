@@ -47,7 +47,7 @@ const ExpertiseSection = () => {
       <div className={styles.contentWrapper}>
         <h2 className={styles.title}>My Expertise</h2>
         <p className={styles.subtitle}>
-          Leveraging my expertise in network architecture, embedded systems, and software development, I design and implement resilient solutions that drive efficiency and innovation in financial markets.
+          I design and implement resilient solutions that drive efficiency and innovation in Tech & Financial markets by Leveraging my expertise in network architecture, embedded systems and software development.
         </p>
         <div className={styles.carouselContainer}>
           <Carousel slides={slides} options={emblaOptions} />
