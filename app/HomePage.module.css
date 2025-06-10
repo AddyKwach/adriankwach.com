@@ -1,0 +1,24 @@
+/* app/HomePage.module.css */
+
+.container {
+  /* This creates the scroll-snap container */
+  scroll-snap-type: y mandatory; 
+  /* Ensures the container takes up the full scrollable height */
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* This targets every direct child of the container (our two sections) */
+.container > * {
+  /* This tells each section to be a snap point */
+  scroll-snap-align: start;
+}
+
+/* Hide the scrollbar for a cleaner look */
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
