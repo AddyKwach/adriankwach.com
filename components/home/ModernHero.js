@@ -23,7 +23,7 @@ const ModernHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Hi, I'm
+          Hi, I&apos;m
         </motion.span>
 
         <motion.h1 
