@@ -8,15 +8,6 @@
   align-items: center; /* Vertically center the content wrapper */
 }
 
-/* This is our new rounded panel */
-.contentWrapper {
-  background-color: #1a1a1a; /* A subtle, lighter dark shade */
-  border-top-left-radius: 24px;  /* Rounded top corners */
-  border-top-right-radius: 24px;
-  padding: 80px 40px;
-  width: 100%;
-  border-top: 1px solid var(--border-dark); /* A subtle top border */
-}
 
 .title {
   font-size: 3rem;
