@@ -1,11 +1,19 @@
-// This is the correct code for app/about/page.js
+// app/about/page.js
+"use client";
 
 import Link from 'next/link';
 import styles from './AboutPage.module.css';
+import { motion } from 'framer-motion'; // Import motion
 
 export default function AboutPage() {
   return (
-    <div className={styles.container}>
+    // Wrap the main div with motion.div
+    <motion.div 
+      className={styles.container}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h1 className={styles.title}>About Me</h1>
       
       <div className={styles.section}>
@@ -34,11 +42,10 @@ export default function AboutPage() {
 
       <div className={styles.ctaSection}>
         <p>Interested in learning more or discussing a potential opportunity?</p>
-        {/* Make sure your CV is named 'adriankwach-cv.pdf' and is inside the /public folder */}
         <Link href="/adriankwach-cv.pdf" target="_blank" className={styles.ctaButton}>
           Download My CV
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
