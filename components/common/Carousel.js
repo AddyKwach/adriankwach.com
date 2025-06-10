@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay'; // <-- 1. Import the Autoplay plugin
 import styles from './Carousel.module.css';
 
 const PrevButton = ({ enabled, onClick }) => (
@@ -26,7 +27,12 @@ const NextButton = ({ enabled, onClick }) => (
 );
 
 const Carousel = ({ slides, options }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  // 2. Pass the Autoplay plugin into the useEmblaCarousel hook
+  // We configure it to play every 5 seconds and pause on hover (stopOnMouseEnter)
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  ]);
+
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
