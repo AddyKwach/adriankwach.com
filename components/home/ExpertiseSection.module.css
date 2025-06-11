@@ -41,6 +41,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  /* ADDED: These new rules for the section itself */
+  .expertiseSection {
+    min-height: auto; /* Let the section size to its content */
+    padding: 60px 0;  /* Adjust vertical padding for mobile */
+  }
+
   .contentWrapper {
     padding: 60px 20px;
     border-top-left-radius: 16px;
