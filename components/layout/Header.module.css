@@ -64,7 +64,7 @@
 }
 
 .navMobile {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: 100%;
@@ -75,6 +75,8 @@
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-dark);
   padding: 10px 0;
+  transform-origin: top; /* Ensures scaling happens from the top */
+  overflow: hidden; /* Hides content during the animation */
 }
 
 .navMobile a {
