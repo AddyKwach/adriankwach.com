@@ -61,7 +61,7 @@ const ExpertiseSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true, amount: 0.8 }}
         >
-          I design and implement resilient solutions that drive efficiency and innovation in Tech & Financial markets by Leveraging my expertise in network architecture, embedded systems and software development.
+          I design and implement resilient solutions that drive efficiency and innovation in Tech & Financial markets by Leveraging my experience in network architecture, embedded systems and software development.
         </motion.p>
 
         <div className={styles.carouselContainer}>
