@@ -20,7 +20,7 @@ const expertiseData = [
 ];
 
 const ExpertiseSection = () => {
-  const emblaOptions = { loop: true, align: 'start' };
+  const emblaOptions = { loop: true, align: 'center' };
 
   // We now create the slides with animation props inside the map function
   const slides = expertiseData.map((item, index) => (
