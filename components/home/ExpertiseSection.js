@@ -22,14 +22,12 @@ const expertiseData = [
 const ExpertiseSection = () => {
   const emblaOptions = { loop: true, align: 'center' };
 
-  // We now create the slides with animation props inside the map function
+  // The animation for the cards inside the carousel is already set up
   const slides = expertiseData.map((item, index) => (
     <motion.div
       key={index}
-      // This creates the "fade in and slide up" effect
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      // This staggers the animation for each card
       transition={{ duration: 0.5, delay: index * 0.15 }}
       viewport={{ once: true }}
     >
@@ -43,12 +41,29 @@ const ExpertiseSection = () => {
 
   return (
     <section className={styles.expertiseSection}>
-      {/* This is our new panel wrapper */}
       <div className={styles.contentWrapper}>
-        <h2 className={styles.title}>My Expertise</h2>
-        <p className={styles.subtitle}>
+        {/* --- MODIFIED: Added motion.h2 and animation props --- */}
+        <motion.h2 
+          className={styles.title}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
+          My Expertise
+        </motion.h2>
+
+        {/* --- MODIFIED: Added motion.p and animation props --- */}
+        <motion.p 
+          className={styles.subtitle}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
           I design and implement resilient solutions that drive efficiency and innovation in Tech & Financial markets by Leveraging my expertise in network architecture, embedded systems and software development.
-        </p>
+        </motion.p>
+
         <div className={styles.carouselContainer}>
           <Carousel slides={slides} options={emblaOptions} />
         </div>
