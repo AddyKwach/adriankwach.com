@@ -108,12 +108,22 @@
     margin: 0 auto 20px; /* Add some bottom margin and center the container itself */
   }
 
-  .imageWrapper {
-    width: 250px;
-    height: 250px;
-  }
 
   .name {
     font-size: 4rem;
+  }
+  .imageWrapper {
+    width: 250px;
+    height: 250px;
+    /* Add these three lines to center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profileImage {
+    /* Reset the desktop positioning */
+    top: 0;
+    left: 0;
   }
 }
