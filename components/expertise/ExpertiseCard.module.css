@@ -5,12 +5,13 @@
   border-radius: 12px;
   padding: 30px;
   text-align: center;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  /* MODIFIED: Removed 'transform' from the transition */
+  transition: background-color 0.3s ease;
   height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  /* REMOVED: The transform property that moved the card */
   background-color: #222222;
 }
 
@@ -43,11 +44,10 @@
   line-height: 1.6;
   opacity: 0; /* Hidden by default */
   transition: opacity 0.3s ease;
-  height: 0; /* Hide it completely */
-  overflow: hidden;
+  /* REMOVED: The height and overflow properties to prevent size change */
 }
 
 .card:hover .description {
   opacity: 1; /* Revealed on hover */
-  height: auto; /* Let it take up its natural height */
+  /* REMOVED: The height property */
 }
