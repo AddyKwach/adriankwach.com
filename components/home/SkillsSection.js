@@ -1,7 +1,7 @@
 // components/home/SkillsSection.js
 "use client";
 
-import { useEffect, useRef, Fragment } from 'react';
+import { useRef, Fragment } from 'react'; // No longer need useEffect
 import { motion } from 'framer-motion';
 import styles from './SkillsSection.module.css';
 
@@ -14,6 +14,7 @@ import MatlabIcon from '../icons/skills/MatlabIcon';
 import AutocadIcon from '../icons/skills/AutocadIcon';
 import KaliLinuxIcon from '../icons/skills/KaliLinuxIcon';
 
+// --- Define your skills data (for the text list) ---
 const skills = [
   { name: 'C#, Python, C++, JavaScript', category: 'Programming Languages' },
   { name: 'Cisco IOS, OSPF, BGP, VLANs', category: 'Networking' },
@@ -23,26 +24,19 @@ const skills = [
   { name: 'SQL (MySQL), Next.js, React', category: 'Web & Databases' },
 ];
 
+// --- Define and group your carousel icons ---
 const iconGroups = [
   [{ name: "React", Icon: ReactIcon }],
   [{ name: "C#", Icon: CSharpIcon }, { name: "C++", Icon: CppIcon }, { name: "Python", Icon: PythonIcon }],
-  [{ name: "Kali Linux", Icon: KaliLinuxIcon }],
+  [ { name: "Kali Linux", Icon: KaliLinuxIcon }],
   [{ name: "MATLAB", Icon: MatlabIcon }, { name: "AutoCAD", Icon: AutocadIcon }]
 ];
 
 const SkillsSection = () => {
+  // We can keep the ref if needed for other things, but it's no longer used for duplication
   const carouselRef = useRef(null);
 
-  useEffect(() => {
-    if (carouselRef.current && carouselRef.current.children.length === iconGroups.flat().length) {
-      const strip = carouselRef.current;
-      const children = Array.from(strip.children);
-      children.forEach(child => {
-        const clone = child.cloneNode(true);
-        strip.appendChild(clone);
-      });
-    }
-  }, []);
+  // The useEffect hook for duplicating icons has been removed.
 
   return (
     <motion.section 
@@ -63,22 +57,25 @@ const SkillsSection = () => {
 
       <div className={styles.carouselContainer}>
         <div className={styles.skillCarouselStrip} ref={carouselRef}>
+          {/* --- Render the icons the FIRST time --- */}
           {iconGroups.map((group, groupIndex) => (
-            <Fragment key={groupIndex}>
-              {group.map(({ name, Icon }) => {
-                // --- THIS IS THE DEBUGGING CODE ---
-                console.log(`Checking icon: ${name}. Is it a function?`, typeof Icon === 'function');
-                if (typeof Icon !== 'function') {
-                  return <div key={name} style={{color: 'red', margin: '0 20px'}}>Error: Invalid component for {name}</div>
-                }
-                // --- END DEBUGGING CODE ---
-                
-                return (
-                  <div key={name} className={styles.skillCarouselIcon} title={name}>
-                    <Icon />
-                  </div>
-                );
-              })}
+            <Fragment key={`group1-${groupIndex}`}>
+              {group.map(({ name, Icon }) => (
+                <div key={`icon1-${name}`} className={styles.skillCarouselIcon} title={name}>
+                  <Icon />
+                </div>
+              ))}
+              {groupIndex < iconGroups.length - 1 && <div className={styles.separator}></div>}
+            </Fragment>
+          ))}
+          {/* --- Render the icons a SECOND time to create the seamless loop --- */}
+          {iconGroups.map((group, groupIndex) => (
+            <Fragment key={`group2-${groupIndex}`}>
+              {group.map(({ name, Icon }) => (
+                <div key={`icon2-${name}`} className={styles.skillCarouselIcon} title={name}>
+                  <Icon />
+                </div>
+              ))}
               {groupIndex < iconGroups.length - 1 && <div className={styles.separator}></div>}
             </Fragment>
           ))}

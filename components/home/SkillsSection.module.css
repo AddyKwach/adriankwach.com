@@ -44,7 +44,7 @@
 .skillCarouselStrip {
   display: flex;
   white-space: nowrap;
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left 15s linear infinite;
 }
 
 .carouselContainer:hover .skillCarouselStrip {
