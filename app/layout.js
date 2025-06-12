@@ -5,7 +5,6 @@ import './globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import CustomCursor from '@/components/common/CustomCursor'; // <-- 1. IMPORT
-import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ['latin'],
