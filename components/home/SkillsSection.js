@@ -1,7 +1,7 @@
 // components/home/SkillsSection.js
 "use client";
 
-import { useRef, Fragment } from 'react'; // No longer need useEffect
+import { useRef, Fragment } from 'react';
 import { motion } from 'framer-motion';
 import styles from './SkillsSection.module.css';
 
@@ -14,7 +14,6 @@ import MatlabIcon from '../icons/skills/MatlabIcon';
 import AutocadIcon from '../icons/skills/AutocadIcon';
 import KaliLinuxIcon from '../icons/skills/KaliLinuxIcon';
 
-// --- Define your skills data (for the text list) ---
 const skills = [
   { name: 'C#, Python, C++, JavaScript', category: 'Programming Languages' },
   { name: 'Cisco IOS, OSPF, BGP, VLANs', category: 'Networking' },
@@ -24,19 +23,40 @@ const skills = [
   { name: 'SQL (MySQL), Next.js, React', category: 'Web & Databases' },
 ];
 
-// --- Define and group your carousel icons ---
-const iconGroups = [
-  [{ name: "React", Icon: ReactIcon }],
-  [{ name: "C#", Icon: CSharpIcon }, { name: "C++", Icon: CppIcon }, { name: "Python", Icon: PythonIcon }],
-  [ { name: "Kali Linux", Icon: KaliLinuxIcon }],
-  [{ name: "MATLAB", Icon: MatlabIcon }, { name: "AutoCAD", Icon: AutocadIcon }]
+// Combine icons and separators into a single array for easier mapping.
+const iconComponents = [
+  { name: "React", Icon: ReactIcon, isIcon: true },
+  { isSeparator: false },
+  { name: "C#", Icon: CSharpIcon, isIcon: true },
+  { name: "C++", Icon: CppIcon, isIcon: true },
+  { name: "Python", Icon: PythonIcon, isIcon: true },
+  { isSeparator: false },
+  { name: "Kali Linux", Icon: KaliLinuxIcon, isIcon: true },
+  { isSeparator: false },
+  { name: "MATLAB", Icon: MatlabIcon, isIcon: true },
+  { name: "AutoCAD", Icon: AutocadIcon, isIcon: true },
 ];
 
 const SkillsSection = () => {
-  // We can keep the ref if needed for other things, but it's no longer used for duplication
   const carouselRef = useRef(null);
 
-  // The useEffect hook for duplicating icons has been removed.
+  // We duplicate the components here to create the seamless loop effect.
+  const duplicatedIcons = [...iconComponents, ...iconComponents];
+
+  // Framer Motion animation variants
+  const marqueeVariants = {
+    animate: {
+      x: ['0%', '-50%'], // Animate from the start to the halfway point (the end of the first set of icons)
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: 'loop',
+          duration: 15, // Adjust this value to change the scroll speed
+          ease: 'linear',
+        },
+      },
+    },
+  };
 
   return (
     <motion.section 
@@ -56,30 +76,26 @@ const SkillsSection = () => {
       </div>
 
       <div className={styles.carouselContainer}>
-        <div className={styles.skillCarouselStrip} ref={carouselRef}>
-          {/* --- Render the icons the FIRST time --- */}
-          {iconGroups.map((group, groupIndex) => (
-            <Fragment key={`group1-${groupIndex}`}>
-              {group.map(({ name, Icon }) => (
-                <div key={`icon1-${name}`} className={styles.skillCarouselIcon} title={name}>
-                  <Icon />
+        <motion.div
+          className={styles.skillCarouselStrip}
+          ref={carouselRef}
+          variants={marqueeVariants}
+          animate="animate"
+          whileHover={{ animationPlayState: 'paused' }} // Pause animation on hover
+        >
+          {/* Map over the duplicated list to render the icons and separators */}
+          {duplicatedIcons.map((item, index) => (
+            <Fragment key={index}>
+              {item.isIcon ? (
+                <div className={styles.skillCarouselIcon} title={item.name}>
+                  <item.Icon />
                 </div>
-              ))}
-              {groupIndex < iconGroups.length - 1 && <div className={styles.separator}></div>}
+              ) : (
+                <div className={styles.separator}></div>
+              )}
             </Fragment>
           ))}
-          {/* --- Render the icons a SECOND time to create the seamless loop --- */}
-          {iconGroups.map((group, groupIndex) => (
-            <Fragment key={`group2-${groupIndex}`}>
-              {group.map(({ name, Icon }) => (
-                <div key={`icon2-${name}`} className={styles.skillCarouselIcon} title={name}>
-                  <Icon />
-                </div>
-              ))}
-              {groupIndex < iconGroups.length - 1 && <div className={styles.separator}></div>}
-            </Fragment>
-          ))}
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );

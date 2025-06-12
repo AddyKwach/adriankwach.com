@@ -41,14 +41,10 @@
   mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
+/* The animation is now handled by Framer Motion, so we remove the 'animation' and 'will-change' properties */
 .skillCarouselStrip {
   display: flex;
   white-space: nowrap;
-  animation: scroll-left 15s linear infinite;
-}
-
-.carouselContainer:hover .skillCarouselStrip {
-  animation-play-state: paused;
 }
 
 .skillCarouselIcon {
@@ -68,14 +64,17 @@
     color: var(--accent-dark);
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.separator {
+  flex-shrink: 0;
+  width: 2px;
+  height: 50px;
+  background-color: var(--border-dark);
+  margin: 0 60px;
+  align-self: center;
+  border-radius: 2px;
 }
+
+/* The @keyframes rule is no longer needed and has been removed. */
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
@@ -83,33 +82,6 @@
     font-size: 2.5rem;
   }
   .skillsGrid {
-    /* Stack skills in a single column on mobile */
     grid-template-columns: 1fr;
   }
 }
-/* components/home/SkillsSection.module.css */
-
-/* ... (keep all the existing styles) ... */
-
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* --- ADD THIS NEW RULE --- */
-.separator {
-  flex-shrink: 0;
-  width: 2px;
-  height: 50px;
-  background-color: var(--border-dark);
-  margin: 0 60px; /* Provides spacing around the line */
-  align-self: center;
-  border-radius: 2px;
-}
-
-/* --- Responsive Adjustments --- */
-/* ... (keep existing media queries) ... */
