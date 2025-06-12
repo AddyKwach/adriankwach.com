@@ -4,7 +4,6 @@
 import { useState, useEffect } from 'react'; 
 import Link from 'next/link';
 import styles from './Header.module.css';
-// 1. Import motion and AnimatePresence from framer-motion
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -23,22 +22,24 @@ const Header = () => {
 
   const headerClassName = `${styles.header} ${isScrolled ? styles.scrolled : ''}`;
 
-  // 2. Define the animation variants for the menu
   const menuVariants = {
     hidden: { 
       opacity: 0,
-      scaleY: 0.95, // Start slightly scaled down
+      scaleY: 0.95,
       transition: { duration: 0.2 }
     },
     visible: { 
       opacity: 1,
-      scaleY: 1, // Scale to full size
+      scaleY: 1,
       transition: { duration: 0.2 }
     },
   };
 
   return (
     <header className={headerClassName}>
+      {/* This new div handles the background and frosted glass effect */}
+      <div className={styles.headerBackground} />
+
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">ADRIAN KWACH</Link>
@@ -62,10 +63,8 @@ const Header = () => {
         </button>
       </div>
       
-      {/* 3. Wrap the menu in AnimatePresence to handle exit animations */}
       <AnimatePresence>
         {menuOpen && (
-          // 4. Change nav to motion.nav and apply the variants
           <motion.nav 
             className={styles.navMobile}
             initial="hidden"
