@@ -7,6 +7,8 @@ const CSharpIcon = ({ className }) => (
       viewBox="0 0 15 15" 
       xmlns="http://www.w3.org/2000/svg"
     >
+        <title>C#</title>
+
         <path d="M10 8V7H11V8H10Z" />
         <path 
             fillRule="evenodd" 

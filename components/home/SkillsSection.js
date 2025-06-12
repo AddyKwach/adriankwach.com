@@ -25,13 +25,10 @@ const skills = [
 
 const iconComponents = [
     { name: "React", Icon: ReactIcon, isIcon: true },
-    { isSeparator: true },
     { name: "C#", Icon: CSharpIcon, isIcon: true },
     { name: "C++", Icon: CppIcon, isIcon: true },
     { name: "Python", Icon: PythonIcon, isIcon: true },
-    { isSeparator: true },
     { name: "Kali Linux", Icon: KaliLinuxIcon, isIcon: true },
-    { isSeparator: true },
     { name: "MATLAB", Icon: MatlabIcon, isIcon: true },
     { name: "AutoCAD", Icon: AutocadIcon, isIcon: true },
 ];
@@ -46,7 +43,7 @@ const SkillsSection = () => {
                 x: {
                     repeat: Infinity,
                     repeatType: 'loop',
-                    duration: 10,
+                    duration: 15,
                     ease: 'linear',
                 },
             },
