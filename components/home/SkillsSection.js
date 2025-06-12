@@ -43,7 +43,7 @@ const SkillsSection = () => {
                 x: {
                     repeat: Infinity,
                     repeatType: 'loop',
-                    duration: 15,
+                    duration: 12,
                     ease: 'linear',
                 },
             },
