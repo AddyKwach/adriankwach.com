@@ -5,13 +5,14 @@ import './globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import CustomCursor from '@/components/common/CustomCursor'; // <-- 1. IMPORT
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ['latin'],
 });
 
 export const metadata = {
-  title: 'Adrian Kwach | Quantitative Developer & Engineer',
+  title: 'Adrian Kwach | Engineer',
   description: 'Portfolio of Adrian Kwach, showcasing projects in quantitative trading, C#, and networking.',
 };
 
