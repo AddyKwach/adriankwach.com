@@ -1,15 +1,14 @@
 // app/page.js
 import ModernHero from "../components/home/ModernHero";
 import ExpertiseSection from "../components/home/ExpertiseSection";
-
-// We have removed the import for HomePage.module.css
+import SkillsSection from "../components/home/SkillsSection"; // 1. Import the new component
 
 export default function HomePage() {
   return (
-    // We are changing the <div> back to a React Fragment <>
     <>
       <ModernHero />
       <ExpertiseSection />
+      <SkillsSection /> {/* 2. Add the new section here */}
     </>
   );
 }
