@@ -1,16 +1,12 @@
 /* components/home/SkillsSection.module.css */
 
-/* In components/home/SkillsSection.module.css */
-
 .skillsSection {
-  /* MODIFICATION: Changed min-height to padding for better mobile consistency */
   padding: 120px 20px;
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Explicitly set the width */
+  width: 100%;
 }
 
 .title {
@@ -39,17 +35,15 @@
 
 /* --- Infinite Carousel Styles --- */
 
-/* NEW: This style controls the overall width of the carousel area */
 .carouselWrapper {
   width: 100%;
-  max-width: 500px; /* You can adjust this value */
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .carouselContainer {
   overflow: hidden;
   width: 100%;
-  /* Adjusted the fade effect for the narrower container */
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
@@ -61,15 +55,14 @@
 
 .skillCarouselIcon {
   flex-shrink: 0;
-  /* MODIFIED: Reduced the size and spacing of the icons */
   width: 60px;
   height: 60px;
-  margin: 0 25px; 
+  margin: 0 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--secondary-text-dark);
-  font-size: 36px; /* For SVGs */
+  font-size: 36px;
   transition: color 0.3s ease;
 }
 
@@ -80,7 +73,6 @@
 .separator {
   flex-shrink: 0;
   width: 2px;
-  /* MODIFIED: Reduced the height and spacing of the separator lines */
   height: 40px;
   background-color: var(--border-dark);
   margin: 0 35px;
@@ -95,5 +87,27 @@
   }
   .skillsGrid {
     grid-template-columns: 1fr;
+  }
+
+  /*
+    --- NEW MOBILE CAROUSEL STYLES ---
+    This section directly targets your idea about icon sizes on mobile.
+  */
+  .carouselWrapper {
+    max-width: 100%; /* Allow carousel to take full screen width on mobile */
+  }
+
+  .skillCarouselIcon {
+    /* Making icons and their spacing smaller for mobile devices */
+    width: 45px;
+    height: 45px;
+    margin: 0 15px;
+    font-size: 28px;
+  }
+
+  .separator {
+    /* Making separators smaller to match */
+    height: 30px;
+    margin: 0 20px;
   }
 }
