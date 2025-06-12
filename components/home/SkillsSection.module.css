@@ -1,12 +1,16 @@
 /* components/home/SkillsSection.module.css */
 
+/* In components/home/SkillsSection.module.css */
+
 .skillsSection {
-  min-height: 100vh;
-  padding: 80px 20px;
+  /* MODIFICATION: Changed min-height to padding for better mobile consistency */
+  padding: 120px 20px;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%; /* Explicitly set the width */
 }
 
 .title {
