@@ -1,11 +1,11 @@
 // components/home/SkillsSection.js
 "use client";
 
-import { useRef } from 'react';
-import { motion } from 'framer-motion';
+// Import the new Marquee component and remove unused imports
+import Marquee from "react-fast-marquee";
 import styles from './SkillsSection.module.css';
 
-// Icon imports
+// Icon imports (these stay the same)
 import PythonIcon from '../icons/skills/PythonIcon';
 import CSharpIcon from '../icons/skills/CsharpIcon';
 import ReactIcon from '../icons/skills/ReactIcon';
@@ -24,40 +24,20 @@ const skills = [
 ];
 
 const iconComponents = [
-    { name: "React", Icon: ReactIcon, isIcon: true },
-    { name: "C#", Icon: CSharpIcon, isIcon: true },
-    { name: "C++", Icon: CppIcon, isIcon: true },
-    { name: "Python", Icon: PythonIcon, isIcon: true },
-    { name: "Kali Linux", Icon: KaliLinuxIcon, isIcon: true },
-    { name: "MATLAB", Icon: MatlabIcon, isIcon: true },
-    { name: "AutoCAD", Icon: AutocadIcon, isIcon: true },
+    { name: "React", Icon: ReactIcon },
+    { name: "C#", Icon: CSharpIcon },
+    { name: "C++", Icon: CppIcon },
+    { name: "Python", Icon: PythonIcon },
+    { name: "Kali Linux", Icon: KaliLinuxIcon },
+    { name: "MATLAB", Icon: MatlabIcon },
+    { name: "AutoCAD", Icon: AutocadIcon },
 ];
 
 const SkillsSection = () => {
-    const carouselRef = useRef(null);
-    const duplicatedIcons = [...iconComponents, ...iconComponents];
-    const marqueeVariants = {
-        animate: {
-            x: ['0%', '-50%'],
-            transition: {
-                x: {
-                    repeat: Infinity,
-                    repeatType: 'loop',
-                    duration: 12,
-                    ease: 'linear',
-                },
-            },
-        },
-    };
-
+    // We no longer need useRef, duplicatedIcons, or marqueeVariants
+    
     return (
-        <motion.section 
-            className={styles.skillsSection}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.2 }}
-        >
+        <section className={styles.skillsSection}>
             <h2 className={styles.title}>Skillsets & Tools</h2>
             <div className={styles.skillsGrid}>
                 {skills.map((skill) => (
@@ -67,32 +47,23 @@ const SkillsSection = () => {
                 ))}
             </div>
 
+            {/* --- REPLACED with the Marquee component --- */}
             <div className={styles.carouselWrapper}>
-                <div className={styles.carouselContainer}>
-                    <motion.div
-                        className={styles.skillCarouselStrip}
-                        ref={carouselRef}
-                        variants={marqueeVariants}
-                        animate="animate"
-                        whileHover={{ animationPlayState: 'paused' }}
-                    >
-                        {duplicatedIcons.map((item, index) => (
-                            // MODIFIED: Replaced Fragment with a div and a new class
-                            <div key={index} className={styles.skillCarouselItem}>
-                                {item.isIcon ? (
-                                    <div className={styles.skillCarouselIcon} title={item.name}>
-                                        <item.Icon />
-                                    </div>
-                                ) : (
-                                    <div className={styles.separator}></div>
-                                )}
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
+                <Marquee
+                    pauseOnHover={true}
+                    speed={50} // Adjust speed as you like
+                    gradient={true} // Adds a nice fade effect on the edges
+                    gradientColor="#121212" // Match your dark background color
+                    gradientWidth={100}
+                >
+                    {iconComponents.map((item, index) => (
+                        <div key={index} className={styles.skillCarouselIcon} title={item.name}>
+                            <item.Icon />
+                        </div>
+                    ))}
+                </Marquee>
             </div>
-            
-        </motion.section>
+        </section>
     );
 };
 

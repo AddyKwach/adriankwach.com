@@ -41,18 +41,6 @@
   margin: 0 auto;
 }
 
-.carouselContainer {
-  overflow: hidden;
-  width: 100%;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.skillCarouselStrip {
-  display: flex;
-  white-space: nowrap;
-}
-
 .skillCarouselIcon {
   flex-shrink: 0;
   width: 60px;
@@ -70,16 +58,6 @@
     color: var(--accent-dark);
 }
 
-.separator {
-  flex-shrink: 0;
-  width: 2px;
-  height: 40px;
-  background-color: var(--border-dark);
-  margin: 0 35px;
-  align-self: center;
-  border-radius: 2px;
-}
-
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .title {
@@ -89,30 +67,14 @@
     grid-template-columns: 1fr;
   }
 
-  /*
-    --- NEW MOBILE CAROUSEL STYLES ---
-    This section directly targets your idea about icon sizes on mobile.
-  */
   .carouselWrapper {
-    max-width: 100%; /* Allow carousel to take full screen width on mobile */
+    max-width: 100%;
   }
 
   .skillCarouselIcon {
-    /* Making icons and their spacing smaller for mobile devices */
     width: 45px;
     height: 45px;
     margin: 0 15px;
     font-size: 28px;
   }
-
-  .separator {
-    /* Making separators smaller to match */
-    height: 30px;
-    margin: 0 20px;
-  }
-}
-
-/* Add this class to your CSS file */
-.skillCarouselItem {
-  display: contents;
 }
