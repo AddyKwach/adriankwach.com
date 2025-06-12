@@ -1,11 +1,11 @@
 // components/home/SkillsSection.js
 "use client";
 
-import { useRef, Fragment } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import styles from './SkillsSection.module.css';
 
-// (Keep all your icon imports here)
+// Icon imports
 import PythonIcon from '../icons/skills/PythonIcon';
 import CSharpIcon from '../icons/skills/CsharpIcon';
 import ReactIcon from '../icons/skills/ReactIcon';
@@ -67,7 +67,6 @@ const SkillsSection = () => {
                 ))}
             </div>
 
-            {/* --- MODIFICATION START --- */}
             <div className={styles.carouselWrapper}>
                 <div className={styles.carouselContainer}>
                     <motion.div
@@ -78,7 +77,8 @@ const SkillsSection = () => {
                         whileHover={{ animationPlayState: 'paused' }}
                     >
                         {duplicatedIcons.map((item, index) => (
-                            <Fragment key={index}>
+                            // MODIFIED: Replaced Fragment with a div and a new class
+                            <div key={index} className={styles.skillCarouselItem}>
                                 {item.isIcon ? (
                                     <div className={styles.skillCarouselIcon} title={item.name}>
                                         <item.Icon />
@@ -86,12 +86,11 @@ const SkillsSection = () => {
                                 ) : (
                                     <div className={styles.separator}></div>
                                 )}
-                            </Fragment>
+                            </div>
                         ))}
                     </motion.div>
                 </div>
             </div>
-            {/* --- MODIFICATION END --- */}
             
         </motion.section>
     );
