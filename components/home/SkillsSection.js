@@ -1,7 +1,7 @@
 // components/home/SkillsSection.js
 "use client";
 
-import { useState, useEffect } from 'react';
+// Import the new Marquee component and remove unused imports
 import Marquee from "react-fast-marquee";
 import styles from './SkillsSection.module.css';
 
@@ -34,19 +34,7 @@ const iconComponents = [
 ];
 
 const SkillsSection = () => {
-    const [isMobile, setIsMobile] = useState(false);
-    
-    // Detect mobile devices
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+    // We no longer need useRef, duplicatedIcons, or marqueeVariants
     
     return (
         <section className={styles.skillsSection}>
@@ -59,35 +47,21 @@ const SkillsSection = () => {
                 ))}
             </div>
 
-            {/* Conditional rendering based on device type */}
+            {/* --- REPLACED with the Marquee component --- */}
             <div className={styles.carouselWrapper}>
-                {isMobile ? (
-                    // Fallback for mobile devices
-                    <div className={styles.mobileIconGrid}>
-                        {iconComponents.map((item, index) => (
-                            <div key={index} className={styles.mobileIcon} title={item.name}>
-                                <item.Icon />
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    // Desktop marquee
-                    <Marquee
-                        pauseOnHover={true}
-                        speed={50}
-                        gradient={false} // Disable gradient to avoid visibility issues
-                        style={{
-                            maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
-                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
-                        }}
-                    >
-                        {iconComponents.map((item, index) => (
-                            <div key={index} className={styles.skillCarouselIcon} title={item.name}>
-                                <item.Icon />
-                            </div>
-                        ))}
-                    </Marquee>
-                )}
+                <Marquee
+                    pauseOnHover={true}
+                    speed={50} // Adjust speed as you like
+                    gradient={true} // Adds a nice fade effect on the edges
+                    gradientColor="#121212" // Match your dark background color
+                    gradientWidth={100}
+                >
+                    {iconComponents.map((item, index) => (
+                        <div key={index} className={styles.skillCarouselIcon} title={item.name}>
+                            <item.Icon />
+                        </div>
+                    ))}
+                </Marquee>
             </div>
         </section>
     );

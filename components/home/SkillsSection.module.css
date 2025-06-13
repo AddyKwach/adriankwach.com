@@ -33,12 +33,12 @@
   color: var(--text-dark);
 }
 
-/* --- Carousel Wrapper --- */
+/* --- Infinite Carousel Styles --- */
+
 .carouselWrapper {
   width: 100%;
-  max-width: 500px; /* Increased from 500px */
+  max-width: 500px;
   margin: 0 auto;
-  min-height: 80px; /* Ensure minimum height */
 }
 
 .skillCarouselIcon {
@@ -58,46 +58,17 @@
     color: var(--accent-dark);
 }
 
-/* --- Mobile Fallback Styles --- */
-.mobileIconGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.mobileIcon {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--secondary-text-dark);
-  font-size: 30px;
-  transition: color 0.3s ease;
-  margin: 0 auto;
-}
-
-.mobileIcon:hover {
-  color: var(--accent-dark);
-}
-
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   .title {
     font-size: 2.5rem;
   }
-  
   .skillsGrid {
     grid-template-columns: 1fr;
   }
 
   .carouselWrapper {
     max-width: 100%;
-    padding: 0 10px;
   }
 
   .skillCarouselIcon {
@@ -105,30 +76,5 @@
     height: 45px;
     margin: 0 15px;
     font-size: 28px;
-  }
-  
-  .mobileIconGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 15px;
-  }
-  
-  .mobileIcon {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mobileIconGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  
-  .mobileIcon {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
   }
 }
