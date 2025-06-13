@@ -1,7 +1,7 @@
 // components/home/SkillsSection.js
 "use client";
 
-// Import the new Marquee component and remove unused imports
+import { useState, useEffect } from 'react';
 import Marquee from "react-fast-marquee";
 import styles from './SkillsSection.module.css';
 
@@ -34,7 +34,19 @@ const iconComponents = [
 ];
 
 const SkillsSection = () => {
-    // We no longer need useRef, duplicatedIcons, or marqueeVariants
+    const [isMobile, setIsMobile] = useState(false);
+    
+    // Detect mobile devices
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
     
     return (
         <section className={styles.skillsSection}>
@@ -47,21 +59,35 @@ const SkillsSection = () => {
                 ))}
             </div>
 
-            {/* --- REPLACED with the Marquee component --- */}
+            {/* Conditional rendering based on device type */}
             <div className={styles.carouselWrapper}>
-                <Marquee
-                    pauseOnHover={true}
-                    speed={50} // Adjust speed as you like
-                    gradient={true} // Adds a nice fade effect on the edges
-                    gradientColor="#121212" // Match your dark background color
-                    gradientWidth={100}
-                >
-                    {iconComponents.map((item, index) => (
-                        <div key={index} className={styles.skillCarouselIcon} title={item.name}>
-                            <item.Icon />
-                        </div>
-                    ))}
-                </Marquee>
+                {isMobile ? (
+                    // Fallback for mobile devices
+                    <div className={styles.mobileIconGrid}>
+                        {iconComponents.map((item, index) => (
+                            <div key={index} className={styles.mobileIcon} title={item.name}>
+                                <item.Icon />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    // Desktop marquee
+                    <Marquee
+                        pauseOnHover={true}
+                        speed={50}
+                        gradient={false} // Disable gradient to avoid visibility issues
+                        style={{
+                            maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
+                        }}
+                    >
+                        {iconComponents.map((item, index) => (
+                            <div key={index} className={styles.skillCarouselIcon} title={item.name}>
+                                <item.Icon />
+                            </div>
+                        ))}
+                    </Marquee>
+                )}
             </div>
         </section>
     );
