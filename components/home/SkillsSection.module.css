@@ -36,7 +36,7 @@
 /* --- Carousel Wrapper --- */
 .carouselWrapper {
   width: 100%;
-  max-width: 800px; /* Increased from 500px */
+  max-width: 500px; /* Increased from 500px */
   margin: 0 auto;
   min-height: 80px; /* Ensure minimum height */
 }
