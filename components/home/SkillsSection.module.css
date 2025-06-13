@@ -39,6 +39,29 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  position: relative; /* Added for pseudo-element positioning */
+}
+
+/* Add these new rules for the gradient overlay */
+.carouselWrapper::before,
+.carouselWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carouselWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #121212, transparent);
+}
+
+.carouselWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #121212, transparent);
 }
 
 .skillCarouselIcon {

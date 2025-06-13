@@ -52,9 +52,6 @@ const SkillsSection = () => {
                 <Marquee
                     pauseOnHover={true}
                     speed={50} // Adjust speed as you like
-                    gradient={true} // Adds a nice fade effect on the edges
-                    gradientColor="#121212" // Match your dark background color
-                    gradientWidth={100}
                 >
                     {iconComponents.map((item, index) => (
                         <div key={index} className={styles.skillCarouselIcon} title={item.name}>
